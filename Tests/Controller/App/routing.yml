@@ -1,0 +1,3 @@
+DpnCmsBundle:
+    resource: "@DpnCmsBundle/Resources/config/routing.xml"
+    prefix:   /

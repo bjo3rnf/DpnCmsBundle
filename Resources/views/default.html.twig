@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="keywords" content="{{ page.keywords }}" />
+    <title>{% block title %}{{ page.title }}{% endblock %}</title>
+</head>
+<body>
+<article>
+    {% block header %}
+        <header>
+            <h1>{{ page.title }}</h1>
+        </header>
+    {% endblock %}
+    {% block navigation %}
+        <nav class="main">
+            {{ knp_menu_render('ROOT', { 'depth': 1 }) }}
+        </nav>
+    {% endblock %}
+    {% block subnavigation %}
+        <nav class="sub">
+            {{ knp_menu_render(page.path) }}
+        </nav>
+    {% endblock %}
+    {% block body %}
+        <section>
+            {{ page.text|markdown(true) }}
+        </section>
+    {% endblock %}
+</article>
+</body>
+</html>

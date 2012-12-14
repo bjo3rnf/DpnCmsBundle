@@ -1,0 +1,27 @@
+{
+    "name": "dpn/cms-bundle",
+    "description": "A very minimalistic, file based CMS inspired by getkirby.com",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "require": {
+        "symfony/symfony": "2.1.*",
+        "knplabs/knp-menu-bundle": "dev-master",
+        "dflydev/markdown": "dev-master"
+    },
+    "require-dev": {
+        "symfony/framework-bundle": "*",
+        "symfony/monolog-bundle": "*",
+        "symfony/twig-bundle": "*"
+    },
+    "authors": [
+        {
+            "name": "Bjoern Fromme",
+            "email": "mail@bjo3rn.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Dpn\\CmsBundle": "" }
+    },
+    "target-dir": "Dpn/CmsBundle",
+    "minimum-stability": "dev"
+}

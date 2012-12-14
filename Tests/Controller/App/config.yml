@@ -1,0 +1,19 @@
+framework:
+    secret:          secret
+    test: ~
+    router:          { resource: "%kernel.root_dir%/routing.yml" }
+    templating:      { engines: [ 'twig' ] }
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      nested
+        nested:
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%.log
+            level: debug
+
+dpn_cms:
+    pages_dir: %kernel.root_dir%/../../Fixtures/pages

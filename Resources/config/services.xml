@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="dpn_cms.manager.site.class">Dpn\CmsBundle\Manager\SiteManager</parameter>
+        <parameter key="dpn_cms.controller.page.class">Dpn\CmsBundle\Controller\PageController</parameter>
+        <parameter key="dpn_cms.twig_extension.class">Dpn\CmsBundle\Twig\MarkdownExtension</parameter>
+    </parameters>
+
+    <services>
+        <service id="dpn_cms.manager.site" class="%dpn_cms.manager.site.class%" />
+        <service id="dpn_cms.controller.page" class="%dpn_cms.controller.page.class%">
+            <argument type="service" id="dpn_cms.manager.site" />
+            <argument>%dpn_cms.pages_dir%</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <service id="dpn_cms.twig_extension" class="%dpn_cms.twig_extension.class%">
+            <tag name="twig.extension" />
+        </service>
+        <service id="dpm_cms.menu.provider" class="Dpn\CmsBundle\Menu\CmsMenuProvider">
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="dpn_cms.manager.site" />
+            <argument>%dpn_cms.pages_dir%</argument>
+            <tag name="knp_menu.provider" />
+        </service>
+    </services>
+
+</container>
